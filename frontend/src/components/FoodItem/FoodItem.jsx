@@ -1,20 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./FoodItem.css";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const { cartItems, addToCart, removeFromCart, url } =
-    useContext(StoreContext);
+  const { cartItems, addToCart, removeFromCart, url } = useContext(StoreContext);
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   return (
     <div className="food-item">
       <div className="food-item-img-container">
-        {image ? (
+        {image && !imageError ? (
           <img
             className="food-item-image"
-            src={url + "/images/" + image}
+            src={`${url}/images/${image}`}
             alt={name}
+            onError={handleImageError}
           />
         ) : (
           <div className="no-image-placeholder">
@@ -44,11 +49,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p className="food-item-name">{name}</p>
-          <img
-            className="rating-stars"
-            src={assets.rating_starts}
-            alt="Rating"
-          />
+          <img className="rating-stars" src={assets.rating_starts} alt="Rating" />
         </div>
         <p className="food-item-desc">{description}</p>
         <p className="food-item-price">₹{price.toFixed(2)}</p>
