@@ -1,143 +1,126 @@
-# Food Ordering Web App (MERN Stack)
+# TasteQuest - A Food Delivery Platform App
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [API Documentation](#api-documentation)
-- [Contributing](#contributing)
-- [Contact](#contact)
-
-## Introduction
-This is a full-stack food ordering web application built using the MERN stack (MongoDB, Express, React, Node.js). The application consists of a customer-facing app for ordering food and an admin app for managing orders, menu items, and more.
+TasteQuest is a full-stack food ordering web application built using the MERN (MongoDB, Express.js, React, Node.js) stack. It provides a comprehensive platform for users to browse, select, and order food items.
 
 ## Features
-- User authentication and authorization
-- Browse food items
-- Add items to the cart and place orders
-- Stripe Payment Integration: Secure and reliable payment processing using Stripe.
-- Order tracking
-- Admin panel to manage menu items, orders
 
-## Technologies Used
-- **Frontend:** React.js, React Context API, React Router
-- **Backend:** Node.js, Express.js
-- **Payment Gateway:** Stripe
-- **Database:** MongoDB
-- **Authentication:** JWT (JSON Web Tokens)
-- **Styling:** CSS
+1. **User Registration and Authentication**
+   - User registration with email and password
+   - Secure login mechanism
 
-## Installation
+2. **Browse Item Inventory**
+   - Browse items by category (e.g., All, Fruit, Vegetable, Non-veg, Breads, etc.)
+   - Creative display of available inventory
+
+3. **Selection Basket/Cart**
+   - Add items to cart with quantity selection
+   - Real-time stock availability check
+   - Persistent cart across sessions and devices
+   - Multiple device login support
+
+
+
+## Setting Up TasteQuest
+
+Follow these instructions to set up TasteQuest locally.
+
 ### Prerequisites
-- Node.js
-- MongoDB
 
-### Clone the Repository
-```sh
-git clone https://github.com/DulanjaliSenarathna/mern-food-delivery-app.git
-cd mern-food-delivery-app
+- Node.js and npm must be installed on your system.
+- MongoDB account and cluster for database connection.
+
+### Cloning the Repository
+
+```bash
+git clone https://github.com/hrishabh-16/TasteQuest-FoodDeliveryPlatform.git
+
+cd TasteQuest
 ```
 
-## Backend Setup
-Navigate to the backend directory:
+### Configurations
 
-```sh
-cd backend
+#### Backend Environment File:
+
+Navigate to the backend folder and create a `.env` file with the following content:
 
 ```
-Install dependencies:
-
-```sh
-npm install
+MONGODB_URI=your_mongodb_connection_string
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+JWT_SECRET=your_jwt_secret
 ```
 
-Create a .env file in the backend directory and add the following:
+- Replace `your_mongodb_connection_string` with your MongoDB cluster connection string.
+- Add your Google OAuth credentials.
+- Set a secure random string for `JWT_SECRET`.
 
-```sh
-JWT_SECRET="random#secret"
-STRIPE_SECRET_KEY="sk_test_51JhWAiRXoTvIuM91beRv8XldfL3GGKyuLhzabkSwNeIXryY51G9UKnwNUFcotg0N6k4UAGhiprjJd4XhAF85JCN4004TC42zkl"
+#### Frontend Environment File:
+
+Navigate to the frontend folder and create a `.env` file with the following content:
+
+```
+REACT_APP_SERVER_URL=http://localhost:5000
+GOOGLE_CLIENT_ID=your_google_client_id
+VITE_BACKEND_URL=http://localhost:5000
 ```
 
-Start the backend server:
+- Adjust the URLs if your backend runs on a different port.
+- Use the same Google Client ID as in the backend.
 
-```sh
-npm run server
-```
-## Frontend Setup
-Navigate to the frontend directory:
+### Running the Application
 
-```sh
+#### Backend Setup
 
-cd frontend
-```
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-Install dependencies:
-```sh
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-npm install
-```
+3. Start the backend server:
+   ```bash
+   npm run dev
+   ```
 
-Start the frontend server:
-```sh
+#### Frontend Setup
 
-npm run dev
-```
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../TasteQuest
+   ```
 
-## Admin App Setup
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-Navigate to the admin directory:
-```sh
+3. Start the frontend application:
+   ```bash
+   npm run dev
+   ```
 
-cd admin
-```
+The application should now be running. Access the frontend at `http://localhost:5173` (or the port specified by Vite) and the backend at `http://localhost:5000`.
 
-Install dependencies:
+## Tech Stack
 
-```sh
-npm install
-```
+- Frontend: React, Vite
+- Backend: Node.js, Express.js
+- Database: MongoDB
+- Authentication: JWT, Google OAuth
+- Styling: Tailwind CSS
+- State Management: React Query, Recoil
 
-Start the admin app :
-```sh
-npm start
-```
+## Additional Notes
 
-## Usage
-Access the customer-facing app at http://localhost:5173.
-Access the admin app at http://localhost:5174.
-Register as a new user or log in with existing credentials.
-Browse the menu, add items to the cart, and place an order.
-Pay using dummy visa card
-Use the admin panel to manage orders, menu items.
-
-## Screenshots
-![1](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/b3d604f0-ae0e-4e29-9b95-51f6327c3952)
-![2](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/0cb56d94-a715-48bd-9a7d-05c876a05b2c)
-![3](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/f5dd216a-dc8d-4042-9a96-4884cdb17aef)
-![Capture2](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/22fc6a58-b713-4ab7-babb-cff5844e7c55)
-![Capture3](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/0f7fe1ab-8c29-4fa2-bdb2-7212994cdf80)
-![Capture4](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/f41881c6-e148-4215-9953-458bbe602007)
-![Capture5](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/34e366fa-8ee5-4f77-a5e0-d5d4ea294672)
-![Capture6](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/1894f642-ea89-42de-ad74-de173c6c42aa)
-![Capture7](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/1a94b8aa-aa4e-4991-9d45-f6548f793b47)
-![Capture8](https://github.com/DulanjaliSenarathna/mern-food-delivery-app/assets/59603716/c85e4c11-7ebf-4e45-8678-4000abde835d)
-
-## API Documentation
-The API endpoints for the backend can be documented using tools like Postman or Swagger. Include endpoints for user authentication, menu items, orders, and more.
+- Ensure both backend and frontend are running simultaneously for full functionality.
+- For local development, you may need to configure CORS settings in the backend to allow requests from the frontend.
+- The project uses Vite for faster development and building processes.
 
 ## Contributing
-Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the code style and include relevant tests.
 
-## Contact
-For any questions or suggestions, feel free to contact me.
-
-Happy coding!
-
-Feel free to customize this template according to your specific project details and requirements.
-
-
-
+Contributions to TasteQuest are welcome. Please ensure to follow the project's code style and submit pull requests for any new features or bug fixes.
 
